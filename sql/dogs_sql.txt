@@ -1,0 +1,37 @@
+CREATE TABLE dogs (
+  id INT AUTO_INCREMENT NOT NULL,
+  name VARCHAR(32) NOT NULL,
+  breeds VARCHAR(32) NOT NULL,
+  gender CHAR(1) NOT NULL,
+  birth DATE NOT NULL,
+  centre VARCHAR(32) NOT NULL,
+  datecreated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  datemodified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  imageurl VARCHAR(65535) NULL,
+  remark VARCHAR(65535) NULL,
+  status VARCHAR(32) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO dogs (name, breeds, gender, birth, centre, imageurl, remark, status)
+VALUES
+  ('Buddy', 'Labrador Retriever', 'Male', '2020-03-15', 'HK', 'https://images.dog.ceo/breeds/labrador/n02099712_1035.jpg', 'Friendly and energetic', 'Available'),
+  ('Max', 'Golden Retriever', 'Male', '2019-07-20', 'KL', 'https://images.dog.ceo/breeds/retriever-golden/n02099601_100.jpg', 'Loves playing fetch', 'Available'),
+  ('Luna', 'German Shepherd', 'Female', '2020-01-10', 'NT', 'https://images.dog.ceo/breeds/germanshepherd/n02106662_10116.jpg', 'Highly intelligent and loyal', 'Available'),
+  ('Charlie', 'Bulldog', 'Male', '2018-11-05', 'HK', 'https://images.dog.ceo/breeds/bulldog-french/n02108915_10044.jpg', 'Laid-back and friendly', 'Adopted'),
+  ('Daisy', 'Poodle', 'Female', '2017-09-12', 'KL', 'https://images.dog.ceo/breeds/poodle-miniature/n02113712_1005.jpg', 'Elegant and intelligent', 'Available'),
+  ('Rocky', 'Rottweiler', 'Male', '2019-04-18', 'NT', 'https://images.dog.ceo/breeds/rottweiler/n02106550_10024.jpg', 'Strong and protective', 'Available'),
+  ('Coco', 'Chihuahua', 'Female', '2020-06-30', 'KL', 'https://images.dog.ceo/breeds/chihuahua/n02085620_10074.jpg', 'Tiny but full of personality', 'Available'),
+  ('Bentley', 'Siberian Husky', 'Male', '2019-03-25', 'HK', 'https://images.dog.ceo/breeds/husky/n02110185_10047.jpg', 'Playful and energetic', 'Available'),
+  ('Lola', 'Beagle', 'Female', '2018-08-15', 'NT', 'https://images.dog.ceo/breeds/beagle/n02088364_10079.jpg', 'Curious and friendly', 'Adopted'),
+  ('Maximus', 'Boxer', 'Male', '2017-12-01', 'KL', 'https://images.dog.ceo/breeds/boxer/n02108089_10012.jpg', 'Energetic and affectionate', 'Available'),
+  ('Molly', 'Labrador Retriever', 'Female', '2019-02-28', 'HK', 'https://images.dog.ceo/breeds/labrador/n02099712_1005.jpg', 'Gentle and easygoing', 'Available'),
+  ('Oliver', 'Pug', 'Male', '2020-09-08', 'NT', 'https://images.dog.ceo/breeds/pug/n02110958_10012.jpg', 'Playful and charming', 'Available'),
+  ('Lucy', 'Dalmatian', 'Female', '2019-05-20', 'KL', 'https://images.dog.ceo/breeds/dalmatian/cooper2.jpg', 'Energetic and spotted', 'Available'),
+  ('Rocko', 'Bulldog', 'Male', '2018-02-14', 'HK', 'https://images.dog.ceo/breeds/bulldog-english/jager-1.jpg', 'Affectionate and loyal', 'Adopted'),
+  ('Lily', 'Corgi', 'Female', '2020-07-03', 'NT', 'https://images.dog.ceo/breeds/corgi-cardigan/n02113186_1009.jpg', 'Friendly and playful', 'Available'),
+  ('Cooper', 'Australian Shepherd', 'Male', '2019-11-12', 'KL', 'https://images.dog.ceo/breeds/sheepdog-australian/n02105641_10048.jpg', 'Intelligent and active', 'Available'),
+('Milo', 'Shih Tzu', 'Male', '2018-04-25', 'HK', 'https://images.dog.ceo/breeds/shihtzu/n02086240_10073.jpg', 'Lively and affectionate', 'Adopted'),
+('Stella', 'Border Collie', 'Female', '2020-01-05', 'NT', 'https://images.dog.ceo/breeds/sheepdog-border/n02106166_1008.jpg', 'Energetic and obedient', 'Available'),
+('Teddy', 'Pomeranian', 'Male', '2019-06-17', 'KL', 'https://images.dog.ceo/breeds/pomeranian/n02112018_10069.jpg', 'Fluffy and friendly', 'Available'),
+('Sophie', 'French Bulldog', 'Female', '2020-08-22', 'HK', 'https://images.dog.ceo/breeds/bulldog-french/n02108915_10047.jpg', 'Adorable and affectionate', 'Available');

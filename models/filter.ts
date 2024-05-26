@@ -1,14 +1,17 @@
-import * as db from '../helpers/database';
+import * as dogsDB from '../helpers/database';
 
-export const getAllByFilter = async(dog: any) => {
-  let keys = Object.keys(dog);
-    let values = Object.values(dog);
-    let param = '';
-  for (let i: number = 0; i < values.length; i++) {
- param += `${keys[i]} like '%${values[i]}%' OR`
+export const getAllByFilter = async (filter: any) => {
+  const keys = Object.keys(filter);
+  const values = Object.values(filter);
+  let conditions = [];
+  let params = [];
+
+  for (let i = 0; i < keys.length; i++) {
+    conditions.push(`${keys[i]} LIKE ?`);
+    params.push(`%${values[i]}%`);
   }
- param = param.slice(0, -2);
-    let query = `SELECT * FROM dogs WHERE ${param} ORDER BY ID`;
-    let data = await db.run_query(query, values);
+
+  const query = `SELECT * FROM dogs WHERE ${conditions.join(' OR ')} ORDER BY ID`;
+  const data = await dogsDB.run_query(query, params);
   return data;
-}
+};

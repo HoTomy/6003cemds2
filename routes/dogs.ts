@@ -9,14 +9,15 @@ const router = new Router({prefix: '/api/v1/dogs'});
 
 // New getAll
 const getAll = async (ctx: RouterContext, next: any)=> {
- let dogs = await model.getAll();
- if (dogs.length) {
- ctx.body = dogs;
- } else {
- ctx.body = {}
- }
- await next();
+  let dogs = await model.getAll();
+  if (dogs.length) {
+    ctx.body = dogs;
+  } else {
+    ctx.body = {"error": "No dogs found"}
+  }
+   await next();
 }
+
 
 const getById = async (ctx: RouterContext, next: any) => {
   let id = ctx.params.id;
@@ -28,6 +29,7 @@ const getById = async (ctx: RouterContext, next: any) => {
   }
   await next();
 }
+
 
 const createDogs = async (ctx: RouterContext, next: any) => {
   const body = ctx.request.body;
@@ -70,9 +72,10 @@ const deleteDogs = async (ctx: RouterContext, next: any) => {
     await next();
 }
 
+
 router.get('/', getAll);
 router.get('/:id([0-9]{1,})', getById);
-router.post('/',basicAuth, bodyParser(), createDogs);
+router.post('/',bodyParser(), createDogs);
 router.put('/:id([0-9]{1,})',basicAuth,bodyParser(),updateDogs);
 router.del('/:id([0-9]{1,})',basicAuth, deleteDogs);
 

@@ -17,6 +17,6 @@ const getAllByFilter = async (ctx: RouterContext, next: any) => {
     await next();
 }
 
-router.post('/', bodyParser(), getAllByFilter);
+router.get('/', bodyParser(), getAllByFilter);
 
 export { router };

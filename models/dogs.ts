@@ -1,61 +1,60 @@
-import * as db from '../helpers/database';
+import * as dogsDB from '../helpers/database';
+import { dog } from '../schema/dog.schema';
 
-export const getById = async (id: any) => {
-  let query = 'SELECT * FROM dogs WHERE ID = ?';
-  let values = [id];
-  let data = await db.run_query(query, values);
-  return data;
-}
-
-export const getAll = async() => {
-  let query = 'SELECT * FROM dogs order by id';
-  let data = await db.run_query(query, null);
-  return data;
-}
-
-
-export const add = async (dog: any) => {
-    let keys = Object.keys(dog);
-    let values = Object.values(dog);
-    let key = keys.join(',');
-    let param = '';
-    for(let i: number=0; i<values.length; i++){ param +='?,'}
-    param=param.slice(0,-1);
-    let query = `INSERT INTO dogs (${key}) VALUES (${param})`;
-    try{
-      await db.run_insert(query, values);
-      return {status: 201};
-    } catch(err: any) {
-      return err;
-    }
-}
-
-export const updateById = async (dog: any , id: any) => {
-    let aid = [id];
-    let keys = Object.keys(dog);
-    let values = Object.values(dog);
-    let param = '';
-  for (let i: number = 0; i < values.length; i++) {
- param += `${keys[i]}= '${values[i]}',`
+export const getById = async (id) => {
+  try {
+    const data = await dogsDB.run_query('dogs', { ID: id });
+    return data;
+  } catch (err) {
+    console.error('Error executing query:', err);
+    throw err;
   }
- param = param.slice(0, -1);
-    let query = `UPDATE dogs SET ${param} WHERE id = ?`;
-      try{
-        await db.run_update(query, aid);
-        return { status: 201 };
-      } catch(err: any) {
-        return err;                                             
-      }
-}
+};
 
-export const deleteById = async (id: any) => {
-    let values = [id];
-    let query =  `DELETE FROM dogs WHERE id='${values}';`
+export const getAll = async () => {
+  try {
+    const data = await dogsDB.run_query('dogs');
+    return data;
+  } catch (err) {
+    console.error('Error executing query:', err);
+    throw err;
+  }
+};
 
-    try{
-        await db.run_delete(query, values);
-        return { status: 201 };
-    } catch(err: any) {
-        return err;                                              
-    }
-}
+export const add = async (dog) => {
+  try {
+    const result = await dogsDB.run_insert('dogs', dog);
+    return { status: 201, result };
+  } catch (err) {
+    return { status: 500, error: err };
+  }
+};
+
+/*
+export const add = async (dog) => {
+  try {
+    const result = await dogsDB.run_insert('dogs', dog);
+    return { status: 201 };
+  } catch (err) {
+    return err;
+  }
+};
+*/
+
+export const updateById = async (dog, id) => {
+  try {
+    const result = await dogsDB.run_update('dogs', { ID: id }, { $set: dog });
+    return { status: 201 };
+  } catch (err) {
+    return err;
+  }
+};
+
+export const deleteById = async (id) => {
+  try {
+    const result = await dogsDB.run_delete('dogs', { ID: id });
+    return { status: 201 };
+  } catch (err) {
+    return err;
+  }
+};

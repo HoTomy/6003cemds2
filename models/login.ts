@@ -1,4 +1,4 @@
-import * as db from '../helpers/database';
+import * as db from '../helpers/userdb';
 
 export const login = async(dog: any) => {
   let keys = Object.keys(dog);

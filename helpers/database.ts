@@ -259,7 +259,7 @@ export const run_update = async <T = any>(
     throw err;
   }
 };
-
+/*
 export const run_delete = async <T = any>(
   collectionName: string,
   filter: object = {},
@@ -273,3 +273,4 @@ export const run_delete = async <T = any>(
     throw err;
   }
 };
+*/

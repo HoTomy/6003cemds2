@@ -1,3 +1,4 @@
+/*
 export const config = {
   db: {
     host: process.env.DB_HOST || "localhost",
@@ -8,3 +9,4 @@ export const config = {
     connectionLimit: 10, // Maximum number of connections in the pool
   },
 };
+*/

@@ -2,7 +2,7 @@ import passport from "koa-passport";
 import { BasicStrategy } from "passport-http";
 import { RouterContext } from "koa-router";
 
-import * as user from "../models/user";
+import * as user from "../routes/user";
 
 const verifyPassword = (user: any, password: string) => {
     return user.password === password;

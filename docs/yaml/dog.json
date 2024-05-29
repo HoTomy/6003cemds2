@@ -7,6 +7,10 @@
       "description": "A dog in the blog",
       "type": "object",
       "properties": {
+        "id": {
+          "description": "ID of the dog",
+          "type": "number"
+      },
         "name": {
           "description": "Name of the dog",
           "type": "string"
@@ -40,7 +44,7 @@
           "type": "string"
       },
     },
-    "required": ["name", "breeds", "gender","birth", "centre","status"]
+    "required": ["id", "name", "breeds", "gender","birth", "centre","status"]
     }
   }
 }

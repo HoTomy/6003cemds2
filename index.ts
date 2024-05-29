@@ -3,9 +3,10 @@ import Router, {RouterContext} from "koa-router";
 import logger from "koa-logger";
 import json from "koa-json";
 import {router as dogs} from "./routes/dogs";
-import {router as filter} from "./routes/filter";
+
 import {router as user} from "./routes/user";
-import {router as login} from "./routes/login";
+
+import {router as application} from "./routes/application";
 import cors from "@koa/cors";
 
 import serve from 'koa-static-folder';
@@ -26,9 +27,10 @@ app.use(router.routes());
 app.listen(10888);
 
 app.use(dogs.routes());
-app.use(filter.routes());
+
 app.use(user.routes());
-app.use(login.routes());
+
+app.use(application.routes());
 app.use(cors());
 
 app.use(serve('./docs'));

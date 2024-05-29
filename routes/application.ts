@@ -3,24 +3,24 @@ import bodyParser from "koa-bodyparser";
 //import * as model from '../models/user';
 
 
-const router = new Router({prefix: '/api/v1/user'});
+const router = new Router({prefix: '/api/v1/application'});
 
-const user = [
-  {username:"staff123",password:"123456",email:"staff123@example.com",staff:"T"},
-  {username:"user123",password:"123456",email:"user123@example.com",staff:"F"}
+const application = [
+  {username:"staff123", email:"staff123@example.com", fullText:"I would like to apply"},
+  
 ];
 
-const getAlluser = async (ctx: RouterContext, next: any)=> {
-  if (user.length) {
-    ctx.body = user;
+const getAllapplication = async (ctx: RouterContext, next: any)=> {
+  if (application.length) {
+    ctx.body = application;
   } else {
-    ctx.body = {"error": "No user found"}
+    ctx.body = {"error": "No application found"}
   }
    await next();
 }
 
 
-
+/*
 const getByUserId = async (ctx: RouterContext, next: any) => {
   let id = +ctx.params.id;
   if ((id<user.length+1) && (id>0)) {
@@ -67,23 +67,6 @@ const updateUserById = async (ctx: RouterContext, next: any) => {
   await next();
   };
 
-
-/*
-const updateUserById = async (ctx: RouterContext, next: () => Promise<any>) => {
-  const id = ctx.params.id;
-  const context: any = ctx.request.body;
-  const index = user.findIndex(u => u._id === id);
-  if (index !== -1) {
-    user[index] = { ...user[index], ...context };
-    ctx.body = user[index];
-    ctx.status = 200;
-  } else {
-    ctx.body = {};
-  }
-  await next();
-};
-*/
-
 const deleteUserById = async (ctx: RouterContext, next: any) => {
   let id = +ctx.params.id;
   if((id < user.length+1) && (id > 0)) {
@@ -91,15 +74,15 @@ const deleteUserById = async (ctx: RouterContext, next: any) => {
     ctx.status = 200;
     ctx.body = user;
   } else {
-    ctx.status = `id:${id} deleted success`;;
+    ctx.status = 404;
   }
   await next();
 }
-
-router.get('/', getAlluser);
-router.get('/:id', getByUserId);
-router.post('/', bodyParser(), registerUser);
-router.put('/:id', bodyParser(), updateUserById);
-router.del('/:id', deleteUserById);
+*/
+router.get('/', getAllapplication);
+//router.get('/:id', getByUserId);
+//router.post('/', bodyParser(), registerUser);
+//router.put('/:id', bodyParser(), updateUserById);
+//router.del('/:id', deleteUserById);
 
 export { router };

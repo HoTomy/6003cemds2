@@ -1,6 +1,6 @@
 export const dog = {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "/dog",
+  "id": "/user",
   "title": "Dog",
   "description": "A dog in the blog",
   "type": "object",

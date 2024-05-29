@@ -50,6 +50,7 @@ export const updateById = async (dog, id) => {
   }
 };
 
+/*
 export const deleteById = async (id) => {
   try {
     const result = await dogsDB.run_delete('dogs', { ID: id });
@@ -58,3 +59,4 @@ export const deleteById = async (id) => {
     return err;
   }
 };
+*/

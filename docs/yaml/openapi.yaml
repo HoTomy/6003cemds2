@@ -11,14 +11,17 @@ info:
      url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 
 servers:
- - url: 'https://ds.hotomy.repl.co'
+ - url: 'https://6003cemdsbe.hotomy.repl.co'
    description: Development server
 
 tags:
- - name: User
-   description: API endpoints for user management.
  - name: Dogs
    description: Access and perform CRUD operations on blog entries.
+ - name: User
+   description: API endpoints for user management.
+ - name: Application
+   description: API endpoints for application management.
+
 
 paths:
   /dogs:

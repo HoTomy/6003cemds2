@@ -1,4 +1,5 @@
 import Datastore from "nedb-promises";
+import {validateUser} from '../controllers/validation';
 
 // Create a new database instance for the 'user' table
 const userDB = Datastore.create({ filename: "./user.db", autoload: true });

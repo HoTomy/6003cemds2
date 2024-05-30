@@ -1,24 +1,27 @@
-import Router, {RouterContext} from "koa-router";
+import Router, { RouterContext } from "koa-router";
 import bodyParser from "koa-bodyparser";
-//import * as model from '../models/user';
+import { validateApplication } from "../controllers/validation";
 
-
-const router = new Router({prefix: '/api/v1/application'});
+const router = new Router({ prefix: "/api/v1/application" });
 
 const application = [
-  {username:"staff123", email:"staff123@example.com", fullText:"I would like to apply"},
-  
+  {
+    username: "test123",
+    email: "test123@abc.com",
+    dogId: "30",
+    applicationDate: "2024-05-30",
+    message: "I would like to apply",
+  },
 ];
 
-const getAllapplication = async (ctx: RouterContext, next: any)=> {
+const getAllapplication = async (ctx: RouterContext, next: any) => {
   if (application.length) {
     ctx.body = application;
   } else {
-    ctx.body = {"error": "No application found"}
+    ctx.body = { error: "No application found" };
   }
-   await next();
-}
-
+  await next();
+};
 
 /*
 const getByUserId = async (ctx: RouterContext, next: any) => {
@@ -30,23 +33,30 @@ const getByUserId = async (ctx: RouterContext, next: any) => {
   }
   await next();
 }
+*/
 
-
-const registerUser = async (ctx: RouterContext, next: any) => {
+const createApplication = async (ctx: RouterContext, next: any) => {
   let c: any = ctx.request.body;
   let username = c.username;
-  let password = c.password;
   let email = c.email;
-  let staff = c.staff;
-  let newUser = {username: username, password: password, email:email, staff:staff}
-    user.push(newUser);
+  let dogId = c.dogId;
+  let applicationDate = c.applicationDate;
+  let message = c.message;
+
+  let newApplication = {
+    username: username,
+    email: email,
+    dogId: dogId,
+    applicationDate: applicationDate,
+    message: message,
+  };
+  application.push(newApplication);
   ctx.status = 201;
-  ctx.body = newUser;
+  ctx.body = newApplication;
   await next();
 };
 
-
-
+/*
 const updateUserById = async (ctx: RouterContext, next: any) => {
   let id = +ctx.params.id;
   let c: any = ctx.request.body;
@@ -66,23 +76,23 @@ const updateUserById = async (ctx: RouterContext, next: any) => {
     }
   await next();
   };
+*/
 
-const deleteUserById = async (ctx: RouterContext, next: any) => {
+const deleteApplication = async (ctx: RouterContext, next: any) => {
   let id = +ctx.params.id;
-  if((id < user.length+1) && (id > 0)) {
-    user.splice(id-1, 1);
+  if (id < application.length + 1 && id > 0) {
+    application.splice(id - 1, 1);
     ctx.status = 200;
-    ctx.body = user;
+    ctx.body = application;
   } else {
     ctx.status = 404;
   }
   await next();
-}
-*/
-router.get('/', getAllapplication);
-//router.get('/:id', getByUserId);
-//router.post('/', bodyParser(), registerUser);
-//router.put('/:id', bodyParser(), updateUserById);
-//router.del('/:id', deleteUserById);
+};
+
+router.get("/", getAllapplication);
+router.post("/", bodyParser(), createApplication, validateApplication);
+//router.put('/:id', bodyParser(), updateApplication);
+router.del("/:id", deleteApplication);
 
 export { router };

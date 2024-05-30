@@ -1,10 +1,18 @@
 {
   "files": {
+    "jest.config.js": [
+      {
+        "id": "1194ac9f-5446-4ab0-97dd-dac015fa3492",
+        "line": 5,
+        "version": 1,
+        "index": 119
+      }
+    ],
     "routes/dogs.ts": [
       {
         "id": "cc5e1262-5dce-41bb-8840-16b663526c57",
         "line": 1,
-        "version": 519,
+        "version": 537,
         "index": 0
       }
     ]

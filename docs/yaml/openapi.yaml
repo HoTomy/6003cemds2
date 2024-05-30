@@ -1,92 +1,140 @@
 openapi: 3.0.0
 info:
-   version: 1.0.0
-   title: Back End Demonstration API
-   description: A simple blog API.
-   contact:
-     name: Tomy Ho
-     email: tomyho@gmail.com
-   license:
-     name: Apache 2.0
-     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 1.0.0
+  title: Back End Demonstration API
+  description: A simple blog API.
+  contact:
+    name: Tomy Ho
+    email: tomyho@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 
 servers:
- - url: 'https://6003cemdsbe.hotomy.repl.co'
-   description: Development server
+  - url: 'https://6003cemdsbe.hotomy.repl.co'
+    description: Development server
 
 tags:
- - name: Dogs
-   description: Access and perform CRUD operations on blog entries.
- - name: User
-   description: API endpoints for user management.
- - name: Application
-   description: API endpoints for application management.
-
+  - name: Dogs
+    description: Access and perform CRUD operations on blog entries.
+  - name: User
+    description: API endpoints for user management.
+  - name: Application
+    description: API endpoints for application management.
 
 paths:
   /dogs:
     get:
-     tags:
-       - Dogs
-     description:
-       Get all dogs.
+      tags:
+        - Dogs
+      description: Get all dogs.
     post:
       tags:
         - Dogs
-      description:
-        Create a new dog.
+      description: Create a new dog.
       requestBody:
         description: All new dog data.
         required: true
         content:
           application/json:
             schema:
-              $ref: ./dog.json#/definitions/dog
+              $ref: './dog.json#/definitions/dog'
       responses:
         '201':
           description: Dogs created
+
   /Dogs/{id}:
     parameters:
       - in: path
         name: id
         schema:
-          type: integer
+        type: integer
         required: true
         description: Numeric id of the dog
     get:
-     tags:
-       - Dogs
-     description:
-       Get dog by id.
-     responses:
-       '200':
-         description: View of a dog record.
-       '404':
-         description: dog was not found in the DB.
+      tags:
+        - Dogs
+      description: Get dog by id.
+      responses:
+        '200':
+          description: View of a dog record.
+        '404':
+          description: Dog was not found in the DB.
     put:
-     tags:
-       - Dogs
-     description:
-       Update dog by ID.
-     requestBody:
+      tags:
+        - Dogs
+      description: Update dog by ID.
+      requestBody:
         description: All new dog data.
         required: true
         content:
           application/json:
             schema:
-              $ref: ./dog.json#/definitions/dog
-     responses:
-       '200':
-         description: Update confirmation and link to record.
-       '404':
-         description: Dog was not found in the DB.
+              $ref: './dog.json#/definitions/dog'
+      responses:
+        '200':
+          description: Update confirmation and link to record.
+        '404':
+          description: Dog was not found in the DB.
     delete:
-     tags:
-       - Dogs
-     description:
-       Delete dog by ID.
-     responses:
-       '200':
-         description: Delete confirmation.
-       '404':
-         description: Dog was not found in the DB.
+      tags:
+        - Dogs
+      description: Delete dog by ID.
+      responses:
+        '200':
+          description: Delete confirmation.
+        '404':
+          description: Dog was not found in the DB.
+
+
+
+  /user:
+    get:
+      tags:
+        - User
+      description: Get user by ID.
+      responses:
+        '200':
+          description: View of a user record.
+        '404':
+          description: User was not found in the DB.
+    post:
+      tags:
+        - User
+      description: Create a new user.
+      requestBody:
+        description: User data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './user.json#/definitions/user'
+      responses:
+        '201':
+          description: User created.
+  /application:
+    get:
+      tags:
+        - Application
+      description: Get application by ID.
+      responses:
+        '200':
+          description: View of an application record.
+        '404':
+          description: Application was not found in the DB.
+    post:
+      tags:
+        - Application
+      description: Create a new application.
+      requestBody:
+        description: Application data.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './application.json#/definitions/application'
+      responses:
+        '201':
+          description: Application created.
+  
+          

@@ -1,6 +1,6 @@
 import Router, { RouterContext } from "koa-router";
 import bodyParser from "koa-bodyparser";
-import { dog } from '../schema/dog.schema';
+import {validateDog} from '../controllers/validation';
 //import * as model from '../models/dogs';
 
 const router = new Router({ prefix: "/api/v1/dogs" });
@@ -437,8 +437,8 @@ const deleteDogById = async (ctx: RouterContext, next: any) => {
 
 router.get("/", getAlldogs);
 router.get("/:id", getByDogId);
-router.post("/", bodyParser(), registerDog);
-router.put("/:id", bodyParser(), updateDogById);
+router.post("/", bodyParser(), registerDog, validateDog);
+router.put("/:id", bodyParser(), updateDogById, validateDog);
 router.del("/:id", deleteDogById);
 
 export { router };

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "user": {
+    "users": {
       "id": "/user",
       "title": "User",
       "description": "A user in the system",

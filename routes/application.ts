@@ -6,14 +6,6 @@ const router = new Router({ prefix: "/api/v1/application" });
 
 const application = [
   {
-    username: "test123",
-    email: "test123@abc.com",
-    dogId: "30",
-    applicationDate: "2024-05-30",
-    message:
-      "Dear Sir/Madam,\n\nI would like to adopt the dog with the following details:\n\nDog ID: 3\n\nDog Name: Luna\n\nDog Breed: German Shepherd\n\nCenter: NT\n\nEmail Address: user2468@gmail.com\n\nThank you.\n\nuser2468",
-  },
-  {
     username: "user2468",
     email: "user2468@gmail.com",
     dogId: 3,
@@ -22,16 +14,16 @@ const application = [
       "Dear Sir/Madam,\n\nI would like to adopt the dog with the following details:\n\nDog ID: 3\n\nDog Name: Luna\n\nDog Breed: German Shepherd\n\nCenter: NT\n\nEmail Address: user2468@gmail.com\n\nThank you.\n\nuser2468.",
   },
   {
-    username: "user2468",
-    email: "user2468@gmail.com",
+    username: "user222",
+    email: "user222@gmail.com",
     dogId: 30,
     applicationDate: "2024-05-29",
     message:
       "Dear Sir/Madam,\n\nI would like to adopt the dog with the following details:\n\nDog ID: 30\n\nDog Name: Lily\n\nDog Breed: Pomeranian\n\nCenter: KL\n\nEmail Address: user2468@gmail.com\n\nThank you.\n\nuser2468.",
   },
   {
-    username: "user2468",
-    email: "user2468@gmail.com",
+    username: "user444",
+    email: "user444@gmail.com",
     dogId: 28,
     applicationDate: "2024-05-28",
     message:

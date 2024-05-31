@@ -18,6 +18,30 @@ const user = [
     email: "user2468@gmail.com",
     staff: "F",
   },
+  {
+    username: "staff111",
+    password: "111111",
+    email: "staff111@gmail.com",
+    staff: "T",
+  },
+  {
+    username: "user222",
+    password: "222222",
+    email: "user222@gmail.com",
+    staff: "F",
+  },
+  {
+    username: "staff333",
+    password: "333333",
+    email: "staff333@gmail.com",
+    staff: "T",
+  },
+  {
+    username: "user444",
+    password: "444444",
+    email: "user444@gmail.com",
+    staff: "F",
+  },
 ];
 
 const basicAuth = async (ctx: RouterContext, next: any) => {
